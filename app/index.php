@@ -1,11 +1,9 @@
 <?php
 
 
-require_once "SimpleParser.php";
+require_once "Forecast.php";
 
-$parser = new SimpleParser('Moscow');
+$forecast = new Forecast('Moscow');
 
-$data = $parser->parse();
-
-var_dump($data);
+$data = $forecast->findOut();
 

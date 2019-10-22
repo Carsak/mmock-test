@@ -1,39 +1,45 @@
 <?php
 
-class SimpleParser
+class Forecast
 {
     /**
-     * Приватный ключ для доступа к АПИ @var string
+     * @var string Приватный ключ для доступа к АПИ
      */
     private $appId = 'fc5a93273d538a1ea38cd3aa2849a58f';
     /**
-     * Ссылка для получения данных @var string
+     * @var string Метод  для получения данных
      */
-    private $url = 'https://api.openweathermap.org/data/2.5/weather?units=metric';
+    private $path = '/data/2.5/weather?units=metric';
     /**
-     * Название города @var string
+     * @var string Урл хоста
+     */
+    private $host = 'https://api.openweathermap.org';
+    /**
+     * @var string Название города
      */
     private $city;
 
     /**
      * @param string $city Название города, для которого нужно узнать погоду
      */
-    public function __construct(string $city)
+    public function __construct(string $city, string $host = null)
     {
         $this->city = $city;
+        if ($host) {
+            $this->host = $host;
+        }
     }
 
     /**
      * Получить данные
      * @return array
      */
-    public function parse(): array
+    public function findOut(): array
     {
         $url  = $this->createUrl();
         $data = $this->simpleParser($url);
-        if ((int)$data['cod'] === 404 || (int)$data['cod'] === 400) {
-            throw new \RuntimeException('City Not Found');
-        }
+        $this->validate($data);
+
         return $data;
     }
 
@@ -60,8 +66,19 @@ class SimpleParser
      * Создать урл для запроса
      * @return string
      */
-    public function createUrl(): string
+    private function createUrl(): string
     {
-        return $this->url . "&q={$this->city}" . "&appid={$this->appId}";
+        return $this->host .  $this->path . "&q={$this->city}" . "&appid={$this->appId}";
+    }
+
+    /**
+     * Валидация выходящих данных
+     * @param array $data
+     */
+    private function validate(array $data): void
+    {
+        if ((int)$data['cod'] === 404 || (int)$data['cod'] === 400) {
+            throw new \RuntimeException('City Not Found');
+        }
     }
 }
