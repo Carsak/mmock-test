@@ -1,0 +1,13 @@
+{
+    "description": "Simple example",
+    "request": {
+        "scheme": "http",
+        "host": "php-docker.local",
+        "method": "GET",
+        "path": "/mmock/:id"
+    },
+    "response": {
+        "statusCode": 200,
+        "body": "Test Response"
+    }
+}
