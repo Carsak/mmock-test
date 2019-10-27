@@ -1,0 +1,7 @@
+description: 'Get User By Id'
+request:
+    method: GET
+    path: "/user/var/:id"
+response:
+    body: '{"email" : "alma@alma.kz", "id" : {{ request.path.id }}, "username" : "alma_z"}'
+    statusCode: 200

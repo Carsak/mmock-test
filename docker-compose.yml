@@ -8,9 +8,3 @@ services:
       - 8083:8083
     volumes:
       - ./config:/config
-  php:
-    image: php:7.2-fpm
-    container_name: php-mmock
-    volumes:
-      - ./:/var/www
-q
