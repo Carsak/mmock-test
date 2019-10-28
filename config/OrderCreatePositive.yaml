@@ -2,11 +2,10 @@ description: "Create Order POST"
 request:
   method: POST
   path: /order/create/
-  body: '{"email": "alma@alma.", "product": "choco-cookies", "quantity" : 3}'
+  body: '{"email": "alma@alma.com", "product": "choco-cookies", "quantity" : 3}'
 response:
   headers:
     Content-Type:
       - application/json
   statusCode: 200
-  body: '{"status": "ok"}'
-
+  body: '{"status": "ok", "id" : "{{ fake.UUID }}", "email" : "{{ request.body.email }}"}'
