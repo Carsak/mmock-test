@@ -1,0 +1,11 @@
+request:
+  method: POST
+  path: /user/logout/
+response:
+  statusCode: 200
+control:
+  scenario:
+    name: orderCreate
+    requiredState:
+      - authorized
+    newState: not_authorized
