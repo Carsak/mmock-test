@@ -4,4 +4,7 @@ request:
     path: "/user/var/:id"
 response:
     body: '{"email" : "alma@alma.kz", "id" : {{ request.path.id }}, "username" : "alma_z"}'
+    headers:
+        Content-Type:
+            - "application/json"
     statusCode: 200

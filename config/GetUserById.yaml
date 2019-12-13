@@ -4,4 +4,7 @@ request:
     path: "/user/99"
 response:
     body: '{"email" : "alma@alma.kz", "id" : 99, "username" : "alma_z"}'
+    headers:
+        Content-Type:
+            - "application/json"
     statusCode: 200
