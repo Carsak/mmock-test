@@ -8,11 +8,11 @@ response:
     Content-Type:
       - application/json
   statusCode: 202
-  body: '{"status": "ok", "id" : "{{ fake.UUID }}", "email" : "{{ request.body.email }}"}'
+  body: '{"status" : "error", "msg" : "unauthorized"}'
 
 control:
   scenario:
     name: orderCreate
     requiredState:
-      - authorized
+      - not_authorized
   priority: 99

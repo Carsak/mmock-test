@@ -1,8 +1,14 @@
 request:
   method: POST
   path: /user/logout/
+
 response:
   statusCode: 200
+  body: '{"msg" : "success logout"}'
+  headers:
+    Content-Type:
+      - application/json
+
 control:
   scenario:
     name: orderCreate
